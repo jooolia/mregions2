@@ -133,8 +133,9 @@ format.</li>
 <code class="sourceCode R"><span><span class="va">bpns</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gaz_search.html">gaz_search</a></span><span class="op">(</span><span class="fl">3293</span>, rdf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">bpns</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "rdf"</span></span>
-<span></span>
+<span><span class="co">#&gt; [1] "rdf"</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="va">bpns</span></span>
 <span><span class="co">#&gt; Total of 99 triples, stored in hashes</span></span>
 <span><span class="co">#&gt; -------------------------------</span></span>
@@ -172,7 +173,7 @@ applications.</p>
 <h3 id="serialize">Serialize<a class="anchor" aria-label="anchor" href="#serialize"></a>
 </h3>
 <p>You can serialize the record in other formats, e.g. JSON-LD</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create a placeholder file</span></span>
 <span><span class="va">bpns_as_jsonld</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".rdf"</span><span class="op">)</span></span>
 <span></span>
@@ -558,7 +559,7 @@ Belgian Part of the North Sea is
 <div class="section level4">
 <h4 id="extract-all-info-from-the-record">Extract all info from the record<a class="anchor" aria-label="anchor" href="#extract-all-info-from-the-record"></a>
 </h4>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sparql</span> <span class="op">&lt;-</span> <span class="st">"</span></span>
 <span><span class="st">  SELECT ?p ?o</span></span>
 <span><span class="st">  WHERE {</span></span>
@@ -586,7 +587,7 @@ Belgian Part of the North Sea is
 </h4>
 <p>The following example extracts all the predicates with the prefix
 <code>mr:</code>, pointing to the Marine Regions Ontology at <a href="http://marineregions.org/ns/ontology" class="external-link uri">http://marineregions.org/ns/ontology</a>.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sparql</span> <span class="op">&lt;-</span> <span class="st">"</span></span>
 <span><span class="st">  PREFIX mr: &lt;http://marineregions.org/ns/ontology#&gt; </span></span>
 <span><span class="st">  SELECT ?s ?p ?o</span></span>
@@ -621,7 +622,7 @@ as an <code><a href="https://docs.ropensci.org/rdflib/reference/rdf.html" class=
 package</p>
 <p>But you could also use <code><a href="../reference/gaz_geometry.html">gaz_geometry()</a></code>, which already
 takes care of this:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bpns_geom</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gaz_geometry.html">gaz_geometry</a></span><span class="op">(</span><span class="fl">3293</span>, format <span class="op">=</span> <span class="st">"rdf"</span><span class="op">)</span></span>
 <span><span class="va">bpns_geom</span></span>
 <span><span class="co">#&gt; Total of 4 triples, stored in hashes</span></span>
@@ -638,7 +639,7 @@ takes care of this:</p>
 <p>The geometry is provided as <a href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry" class="external-link">WKT</a>.
 This is the same logic that <code>gaz_geometry(format = "wkt")</code>
 uses to extract the geometry:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sparql</span> <span class="op">&lt;-</span> <span class="st">"</span></span>
 <span><span class="st">  PREFIX gsp: &lt;http://www.opengis.net/ont/geosparql#&gt;</span></span>
 <span><span class="st">  SELECT ?o</span></span>
@@ -661,7 +662,7 @@ will be returned</p>
 <p>Example: Get the Gazetteer entry for <em>“Belgium”</em> with MRGID
 <code>&lt;http://marineregions.org/mrgid/14&gt;</code> and extract the
 label in Dutch (nl) if available.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">belgium</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gaz_search.html">gaz_search</a></span><span class="op">(</span><span class="fl">14</span>, rdf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sparql</span> <span class="op">&lt;-</span> <span class="st">'</span></span>
@@ -710,7 +711,7 @@ database. This is further explained in
 <p>As an example, using a <a href="https://en.wikipedia.org/wiki/Virtuoso_Universal_Server" class="external-link">Virtuoso</a>
 database backend is possible. Virtuoso is a popular open source database
 for RDF.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">triplestore</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/rdflib/reference/rdf.html" class="external-link">rdf</a></span><span class="op">(</span>storage <span class="op">=</span> <span class="st">"virtuoso"</span>, </span>
 <span>                   user <span class="op">=</span> <span class="st">"dba"</span>, </span>
 <span>                   password <span class="op">=</span> <span class="st">"dba"</span>, </span>
