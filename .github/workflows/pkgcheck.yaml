@@ -12,6 +12,7 @@ on:
   push:
     branches:
       - main
+      - pckcheck_test
 
 jobs:
   pkgcheck:
